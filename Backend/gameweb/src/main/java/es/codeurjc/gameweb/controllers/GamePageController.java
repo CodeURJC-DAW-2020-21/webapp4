@@ -43,7 +43,19 @@ public class GamePageController {
         model.addAttribute("customMessage", "Suscripción realizada con éxito");
         return "savedGame";
     }  
-    
+    @RequestMapping("/GamePage/{id}/unsubButton")
+    public String unsubButton(Model model, @PathVariable Long id){
+        String gameTitle=gamePostService.findById(id).get().getGameTitle();
+        for(int i=0; i<commonFunctions.getU().getMyGames().size(); i++){
+            if(gamePostService.findById(commonFunctions.getU().getMyGames().get(i)).get().getGameTitle().equals(gameTitle)){
+                commonFunctions.getU().getMyGames().remove(commonFunctions.getU().getMyGames().get(i));
+                commonFunctions.getSession(model);
+                userService.save(commonFunctions.getU());
+            }
+        }
+        model.addAttribute("customMessage", "Desuscripción realizada con éxito");        
+        return "savedGame";
+    } 
     public float doAverageScore(HashMap<Long, Integer> MyScores){
         float aux = 0;
         for (Integer value : MyScores.values()) {
@@ -101,6 +113,10 @@ public class GamePageController {
         model.addAttribute("Messages", myGame.getChat().getListMessages());
         commonFunctions.getSession(model);
         gamePostService.save(myGame);
+        if(commonFunctions.getU().isLogged()){
+            model.addAttribute("canSub", !commonFunctions.getU().getMyGames().contains(myGame.getId()));
+            //model.addAttribute("Messages", chat.getListMessages());
+        }   
         return "GamePage";
     }
     

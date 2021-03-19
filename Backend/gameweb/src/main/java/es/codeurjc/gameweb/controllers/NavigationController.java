@@ -158,17 +158,17 @@ public class NavigationController implements ErrorController {
         Chat chat;
         chat = myChat.get();
         model.addAttribute("game", game);
-        // save the ID of the game to connect it to a chat
-        // iterate the chat messages to allign them to the right or to the left
         for (Integer i = 0; i <= chat.getListMessages().size() - 1; i++) {
             if (commonFunctions.getU().getInfo().equals(chat.getListMessages().get(i).getNameUser()))
                 chat.getListMessages().get(i).setMessageWriter(true);
             else
                 chat.getListMessages().get(i).setMessageWriter(false);
         }
-        model.addAttribute("Messages", chat.getListMessages());
+        if(commonFunctions.getU().isLogged()){
+            model.addAttribute("canSub", !commonFunctions.getU().getMyGames().contains(game.getId()));
+            model.addAttribute("Messages", chat.getListMessages());
+        }    
         commonFunctions.getSession(model);
-
         return "GamePage";
     }
     @RequestMapping("/morePosts") 
@@ -228,7 +228,7 @@ public class NavigationController implements ErrorController {
     public String SignOff(Model model) {
         commonFunctions.getU().setLogged(false);
         commonFunctions.getSession(model);
-        model.addAttribute("games", gamePostService.findAll());
+        model.addAttribute("games", gamePostService.findBestRatedGames());
         model.addAttribute("whatList", "Mejor valorados");
         model.addAttribute("nextPage", 1);
         return "index";
