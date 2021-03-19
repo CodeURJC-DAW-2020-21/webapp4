@@ -148,11 +148,13 @@ public class DBInitializer {
         suscriptions.add(g2.getId());
 		User user1 = new User("Kike", "12345", suscriptions);
 		user1.setAdmin(true);
+        user1.setRoles();
         setUserImage(user1, "/sample_images/user-image-0.jpg");
         userRepository.save(user1);
 
 		User user2 = new User("Pepe", "54321", null);
 		user2.setAdmin(false);
+        user2.setRoles();
         setUserImage(user2, "/sample_images/user-image-1.jpg");
         userRepository.save(user2);
 
