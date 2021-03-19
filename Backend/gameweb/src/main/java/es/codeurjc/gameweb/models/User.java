@@ -2,8 +2,11 @@ package es.codeurjc.gameweb.models;
 
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +36,8 @@ public class User {
     private String password;
     private boolean logged = false;
     private boolean admin = false;
+    @ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
 
     private ArrayList<Long> myGames;
 
@@ -113,5 +118,19 @@ public class User {
     public void setImage(boolean image) {
         this.image = image;
     }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles() {
+        if (this.admin)
+            this.roles.add("ADMIN");
+        else
+            this.roles.add("USER");
+        
+    }
+
+    
 
 }

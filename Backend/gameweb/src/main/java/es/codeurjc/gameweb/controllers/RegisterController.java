@@ -28,6 +28,7 @@ public class RegisterController {
     public String newUser(Model model, User user, @RequestParam String password, @RequestParam String password1) throws IOException {
         if(password.equals(password1)){
             user.setAdmin(false);
+            user.setRoles();
             userService.save(user);
             user.setLogged(true);
             commonFunctions.setU(user);
