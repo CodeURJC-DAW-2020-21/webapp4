@@ -1,0 +1,716 @@
+{
+	"info": {
+		"_postman_id": "8d0fad88-efd2-4816-8e19-51f33c9f4db3",
+		"name": "Phase3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GameRESTRequest",
+			"item": [
+				{
+					"name": "Get games by genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/game/genres?genre=Horror",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								"genres"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "Horror"
+								}
+							]
+						},
+						"description": "Get games by genre"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/game/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								""
+							]
+						},
+						"description": "Get all games"
+					},
+					"response": []
+				},
+				{
+					"name": "Get page of games (4 by 4)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/game/page?numPage=0",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								"page"
+							],
+							"query": [
+								{
+									"key": "numPage",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Get page of games (4 at a time)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get game by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/game/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								"1"
+							]
+						},
+						"description": "Get game by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create game",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gameTitle\":\"Enderal Forgotten Stories\",\r\n    \"genre\": \"RPG\",\r\n    \"mapScores\":null,\r\n    \"description\":\"Enderal: Forgotten Stories es un mod de para Skyrim que tiene lugar en su propio mundo con paisajes, tramas e historia propia. Enderal ofrece al jugador un inmersivo mundo abierto para explorar, un sistema de habilidades y mecánicas de juego renovadas y un argumento oscuro y psicológico.\",\r\n    \"chat\":null,\r\n    \"thePosts\":[],\r\n    \"imagePath\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/game/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								""
+							]
+						},
+						"description": "Create a game"
+					},
+					"response": []
+				},
+				{
+					"name": "Get game image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/game/147/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								"147",
+								"image"
+							]
+						},
+						"description": "Get game image"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify game",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gameTitle\":\"Enderal: Forgotten Stories\",\r\n    \"genre\": \"RPG\",\r\n    \"mapScores\":null,\r\n    \"description\":\"Enderal: Forgotten Stories es un mod de para Skyrim que tiene lugar en su propio mundo con paisajes, tramas e historia propia. Enderal ofrece al jugador un inmersivo mundo abierto para explorar, un sistema de habilidades y mecánicas de juego renovadas y un argumento oscuro y psicológico.\",\r\n    \"chat\":null,\r\n    \"thePosts\":[],\r\n    \"imagePath\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/game/147",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								"147"
+							]
+						},
+						"description": "Edit game"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload game image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/C:/Users/Usuario/Downloads/traveler.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/game/147/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								"147",
+								"image"
+							]
+						},
+						"description": "Upload Image for game"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete game",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/game/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"game",
+								"1"
+							]
+						},
+						"description": "Delete game by ID\r\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PostRESTRequests",
+			"item": [
+				{
+					"name": "Get all posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/post/all",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get posts from game",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/post/game?gameID=17",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"game"
+							],
+							"query": [
+								{
+									"key": "gameID",
+									"value": "17"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get posts by type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/post/type?theType=Updates",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"type"
+							],
+							"query": [
+								{
+									"key": "theType",
+									"value": "Updates"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get individual Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/post/24",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Nuevo post\",\r\n    \"creationDate\":\"17/04/21\",\r\n    \"updateDate\":\"17/04/21\",\r\n    \"fromGame\":null,\r\n    \"postText\":\"lorem ipsum\",\r\n    \"author\":\"Pepito\",\r\n    \"theType\":\"News\",\r\n    \"imagePath\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/post/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Nuevo post version 2\",\r\n    \"creationDate\":\"17/04/21\",\r\n    \"updateDate\":\"17/04/21\",\r\n    \"fromGame\":null,\r\n    \"postText\":\"lorem ipsum\",\r\n    \"author\":\"Juanito\",\r\n    \"theType\":\"Updates\",\r\n    \"imagePath\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/post/148",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"148"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload post image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/C:/Users/Usuario/Downloads/traveler.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/post/148/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"148",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get post image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/post/148/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"148",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/post/148",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"post",
+								"148"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProfileRESTRequests",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/profile/all",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"profile",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/profile/145",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"profile",
+								"145"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"info\":\"Jespar\",\r\n    \"password\":\"abcde\",\r\n    \"roles\":[\"USER\"],\r\n    \"myGames\":[1,3],\r\n    \"imagePath\":null,\r\n    \"image\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/profile/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"info\":\"Jespar Dal Varek\",\r\n    \"password\":\"abcde\",\r\n    \"roles\":[\"USER\"],\r\n    \"myGames\":[1],\r\n    \"imagePath\":null,\r\n    \"image\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/profile/149",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"profile",
+								"149"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload profile image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/C:/Users/Usuario/Downloads/traveler.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/profile/149/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"profile",
+								"149",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/profile/149/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"profile",
+								"149",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Log in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Login in the app (with admin permissions)"
+			},
+			"response": []
+		},
+		{
+			"name": "Log Out",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/auth/logout",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

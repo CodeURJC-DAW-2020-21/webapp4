@@ -14,6 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.sql.Blob;
@@ -32,8 +33,9 @@ public class Game {
     private Long id;
 
     @Lob
+    @JsonIgnore
 	private Blob imageFile;
-
+    @JsonIgnore
 	private boolean image;
 
     @JsonView(gameBasico.class)
@@ -42,7 +44,7 @@ public class Game {
     private Genres genre;
     @Column(columnDefinition = "LONGBLOB")
     HashMap<Long, Integer> mapScores = new HashMap<Long, Integer>();
-    
+    @JsonView(gameBasico.class)
     private float averageScore;
     
     @Column(columnDefinition = "TEXT")
@@ -53,7 +55,16 @@ public class Game {
     @OneToMany(mappedBy = "fromGame",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Post> thePosts=new ArrayList<>();
 
-    
+    @JsonView(gameBasico.class)
+    private String imagePath;
+ 
+    public String getImagePath() {
+        return this.imagePath;
+    }
+ 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public Game(){}
 

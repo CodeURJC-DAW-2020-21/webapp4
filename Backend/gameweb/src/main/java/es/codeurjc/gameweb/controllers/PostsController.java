@@ -45,8 +45,6 @@ public class PostsController {
     private AlgorithmService algorithm;
     @Autowired
 	private UserService userService;
-    @Autowired
-    private PostRepository postRepo;
     
     
     @ModelAttribute

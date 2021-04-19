@@ -1,0 +1,937 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: https://localhost:8443
+  description: Generated server url
+paths:
+  /api/profile/{id}:
+    get:
+      tags:
+      - profile-controller-rest
+      operationId: getUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User_userBasico'
+    put:
+      tags:
+      - profile-controller-rest
+      operationId: editUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User_userBasico'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User_userBasico'
+  /api/post/{id}:
+    get:
+      tags:
+      - posts-controller-rest
+      operationId: getIndividualPost
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Post_PostDetail'
+    put:
+      tags:
+      - posts-controller-rest
+      operationId: editPost
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Post'
+    delete:
+      tags:
+      - posts-controller-rest
+      operationId: deletePost
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Post'
+  /api/game/{id}:
+    get:
+      tags:
+      - game-controller-rest
+      operationId: getGame
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Game_gameBasico'
+    put:
+      tags:
+      - game-controller-rest
+      operationId: editGame
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game_gameBasico'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Game_gameBasico'
+    delete:
+      tags:
+      - game-controller-rest
+      operationId: deleteGame
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Game'
+  /api/chat/{id}:
+    get:
+      tags:
+      - chat-controller-rest
+      operationId: getIndividualChat
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Chat_ChatDetail'
+    put:
+      tags:
+      - chat-controller-rest
+      operationId: addMessage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: message
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Chat_ChatDetail'
+    delete:
+      tags:
+      - chat-controller-rest
+      operationId: deleteChat
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Chat_ChatDetail'
+  /api/profile/{id}/image:
+    get:
+      tags:
+      - profile-controller-rest
+      operationId: downloadImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    post:
+      tags:
+      - profile-controller-rest
+      operationId: uploadImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/profile/:
+    post:
+      tags:
+      - profile-controller-rest
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User_userBasico'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User_userBasico'
+  /api/post/{id}/image:
+    get:
+      tags:
+      - posts-controller-rest
+      operationId: downloadImage_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    post:
+      tags:
+      - posts-controller-rest
+      operationId: uploadImage_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/post/:
+    post:
+      tags:
+      - posts-controller-rest
+      operationId: createPost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Post'
+  /api/game/{id}/image:
+    get:
+      tags:
+      - game-controller-rest
+      operationId: downloadImage_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    post:
+      tags:
+      - game-controller-rest
+      operationId: uploadImage_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/game/:
+    post:
+      tags:
+      - game-controller-rest
+      operationId: createGame
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game_gameBasico'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Game_gameBasico'
+  /api/chat/:
+    post:
+      tags:
+      - chat-controller-rest
+      operationId: createChat
+      parameters:
+      - name: gameID
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Chat_ChatDetail'
+  /api/auth/refresh:
+    post:
+      tags:
+      - login-controller-rest
+      operationId: refreshToken
+      parameters:
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/logout:
+    post:
+      tags:
+      - login-controller-rest
+      operationId: logOut
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/login:
+    post:
+      tags:
+      - login-controller-rest
+      operationId: login
+      parameters:
+      - name: accessToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/profile/all:
+    get:
+      tags:
+      - profile-controller-rest
+      operationId: getAllUsers
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User_userBasico'
+  /api/post/type:
+    get:
+      tags:
+      - posts-controller-rest
+      operationId: getPostsOfType
+      parameters:
+      - name: theType
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post_PostDetail'
+  /api/post/game:
+    get:
+      tags:
+      - posts-controller-rest
+      operationId: getPostsOfGame
+      parameters:
+      - name: gameID
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post_PostDetail'
+  /api/post/all:
+    get:
+      tags:
+      - posts-controller-rest
+      operationId: getPosts
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post_PostDetail'
+  /api/game:
+    get:
+      tags:
+      - game-controller-rest
+      operationId: getGames
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game_gameBasico'
+  /api/game/{id}/scores:
+    get:
+      tags:
+      - game-controller-rest
+      operationId: getScores
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+  /api/game/page:
+    get:
+      tags:
+      - game-controller-rest
+      operationId: getGamesPaginated
+      parameters:
+      - name: numPage
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game_gameBasico'
+  /api/game/genres:
+    get:
+      tags:
+      - game-controller-rest
+      operationId: getGamesByGenre
+      parameters:
+      - name: genre
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game_gameBasico'
+  /api/chat/all:
+    get:
+      tags:
+      - chat-controller-rest
+      operationId: getAllChats
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Chat_ChatDetail'
+components:
+  schemas:
+    User_userBasico:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        info:
+          type: string
+        password:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        myGames:
+          type: array
+          items:
+            type: integer
+            format: int64
+        imagePath:
+          type: string
+    Chat:
+      type: object
+      properties:
+        listMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        ID:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+    Game:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        gameTitle:
+          type: string
+        genre:
+          type: string
+          enum:
+          - Horror
+          - Shooter
+          - Action
+          - Platformer
+          - Sports
+          - Puzzles
+          - Narrative
+          - RPG
+        mapScores:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        averageScore:
+          type: number
+          format: float
+        description:
+          type: string
+        chat:
+          $ref: '#/components/schemas/Chat'
+        thePosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+        imagePath:
+          type: string
+    Message:
+      type: object
+      properties:
+        nameUser:
+          type: string
+        msgString:
+          type: string
+        id:
+          type: integer
+          format: int64
+          writeOnly: true
+        messageWriter:
+          type: boolean
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        creationDate:
+          type: string
+        updateDate:
+          type: string
+        fromGame:
+          $ref: '#/components/schemas/Game'
+        postText:
+          type: string
+        author:
+          type: string
+        theType:
+          type: string
+          enum:
+          - News
+          - Updates
+          - Guides
+        imagePath:
+          type: string
+    Chat_gameBasico:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    Game_gameBasico:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        gameTitle:
+          type: string
+        genre:
+          type: string
+          enum:
+          - Horror
+          - Shooter
+          - Action
+          - Platformer
+          - Sports
+          - Puzzles
+          - Narrative
+          - RPG
+        mapScores:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        averageScore:
+          type: number
+          format: float
+        description:
+          type: string
+        chat:
+          $ref: '#/components/schemas/Chat_gameBasico'
+        thePosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post_gameBasico'
+        imagePath:
+          type: string
+    Post_gameBasico:
+      type: object
+      properties:
+        fromGame:
+          $ref: '#/components/schemas/Game_gameBasico'
+    Chat_ChatDetail:
+      type: object
+      properties:
+        listMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message_ChatDetail'
+        ID:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+    Message_ChatDetail:
+      type: object
+      properties:
+        nameUser:
+          type: string
+        msgString:
+          type: string
+        id:
+          type: integer
+          format: int64
+          writeOnly: true
+        messageWriter:
+          type: boolean
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+        message:
+          type: string
+        error:
+          type: string
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Chat_PostDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    Game_PostDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        gameTitle:
+          type: string
+        genre:
+          type: string
+          enum:
+          - Horror
+          - Shooter
+          - Action
+          - Platformer
+          - Sports
+          - Puzzles
+          - Narrative
+          - RPG
+        mapScores:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        averageScore:
+          type: number
+          format: float
+        description:
+          type: string
+        chat:
+          $ref: '#/components/schemas/Chat_PostDetail'
+        thePosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post_PostDetail'
+        imagePath:
+          type: string
+    Post_PostDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        creationDate:
+          type: string
+        updateDate:
+          type: string
+        fromGame:
+          $ref: '#/components/schemas/Game_PostDetail'
+        postText:
+          type: string
+        author:
+          type: string
+        theType:
+          type: string
+          enum:
+          - News
+          - Updates
+          - Guides
+        imagePath:
+          type: string

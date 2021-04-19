@@ -9,6 +9,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -17,25 +18,39 @@ import java.sql.Blob;
 @Entity
 @DynamicUpdate
 public class Post {
+    public interface postBasic{}
+    public interface games{}
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(postBasic.class)
 	private long id;
-    
+    @JsonView(postBasic.class)
     private String title;
+    @JsonView(postBasic.class)
     private String creationDate;
+    @JsonView(postBasic.class)
     private String updateDate;
     @ManyToOne
     @JsonIgnore
+    @JsonView(games.class)
     private Game fromGame;
     @Column(columnDefinition = "TEXT")
+    @JsonView(postBasic.class)
     private String postText;
+    @JsonView(postBasic.class)
     private String author;
+    @JsonView(postBasic.class)
     private PostType theType;
     @Lob
     @JsonIgnore
 	private Blob imageFile;
+    @JsonIgnore
     private boolean image;
+    @JsonView(postBasic.class)
+    private String imagePath;
+
     
+
     public Post(){}
     public Post(String title, String creationDate, String updateDate,String author,String postText,PostType theType){
         super();
@@ -61,7 +76,13 @@ public class Post {
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
+    public String getImagePath() {
+        return this.imagePath;
+    }
 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
     public String getUpdateDate() {
         return this.updateDate;
     }

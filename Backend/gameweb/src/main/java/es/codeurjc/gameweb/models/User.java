@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -35,18 +36,32 @@ public class User {
     private Long id;
 
     @Lob
+    @JsonIgnore
 	private Blob imageFile;
-
+    @JsonIgnore
 	private boolean image;
     @JsonView(userBasico.class)
     private String info;
+    @JsonIgnore
     private String password;
     
     @ElementCollection(fetch = FetchType.EAGER)
+    @JsonView(userBasico.class)
 	private List<String> roles;
     @Column(columnDefinition = "LONGBLOB")
     @JsonView(userBasico.class)
     private ArrayList<Long> myGames;
+
+    @JsonView(userBasico.class)
+    private String imagePath;
+ 
+    public String getImagePath() {
+        return this.imagePath;
+    }
+ 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public User(){}
 
