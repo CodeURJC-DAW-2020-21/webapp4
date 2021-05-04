@@ -454,16 +454,15 @@ Implementation of user functions, fixing error and login and register functions
  | #4 | Register | [register.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp4/blob/main/Frontend/Angular/src/app/register/register.component.ts) |
  | #5 | Login service (ts and HTML)| [login.service.ts](https://github.com/CodeURJC-DAW-2020-21/webapp4/blob/main/Frontend/Angular/src/app/adminUpdates/login.service.ts) |
 
- 
 
 ### Relevenats commits:
  | Number | Description | Commit |
  | ------ | ----------- | ------ |
  | #1 | Fixing errors in the page| [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/tree/389ca365a15d0fdf0da22708eeec11a2276e17b2)|
- | #2 | Upload and edit posts with image implementation and fixes | [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/commit/0d558020cc8a3f3f22e4ddd7dd7fa0bae9c9ff92)|
- | #3 | Game list page with filters| [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/commit/5ca631ad83949c555b29cdf2bee9412d31c00ba2)|
- | #4 | Create and edit post (no image yet) | [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/commit/db6ac76c0bd99a3160b357e9dffd8f2fa91ec1c2)|
- | #5 | First implementations of algorithms and petitions | [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/commit/80364108b5313ad1109f579b0c394764cd067199)|
+ | #2 | Game page and subscriptions | [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/tree/08772ec9f34f4e836bceb55af15b2860543412c2)|
+ | #3 | Upload Images| [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/commit/bc4d1e02dd95bf9fa423f4385da0d02185e8b295)|
+ | #4 | Fix in the login functions | [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/commit/e3b4d7fed10a52a56364fd55f352930219ec6df0)|
+ | #5 | Register function | [commit](https://github.com/CodeURJC-DAW-2020-21/webapp4/commit/d9d161b61623670bfbefb122ec5d99c159fb0223)|
 
 ## Gabriel Fuentes Villasevil
 
